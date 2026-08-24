@@ -35,7 +35,7 @@ func helpCommand(s *discordgo.Session, m *discordgo.MessageCreate, args []string
 }
 
 var Commands = map[string]models.Command{
-	"weather": {
+	"!weather": {
 		Name:        "Weather Command.",
 		Description: "Get the weather of a city. weather cityname",
 		Handler:     commands.Weather,
