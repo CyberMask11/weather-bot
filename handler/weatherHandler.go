@@ -47,7 +47,7 @@ func WeatherHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if m.ChannelID != "1539982012415348776" {
+	if m.ChannelID != {channel_id} {
 		return
 	}
 
