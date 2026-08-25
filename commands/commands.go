@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
@@ -89,4 +90,26 @@ func Weather(s *discordgo.Session, m *discordgo.MessageCreate, args []string) {
 	}
 
 	s.ChannelMessageSendEmbed(m.ChannelID, embed)
+}
+
+func Hello(s *discordgo.Session, m *discordgo.MessageCreate, args []string) {
+	currentTime := time.Now().Format("03:04 PM")
+
+	arg := strings.Fields(currentTime)
+	if arg[1] == "AM" {
+		s.ChannelMessageSendEmbed(m.ChannelID, &discordgo.MessageEmbed{
+			Description: "Good Morning Sir, Ready to check the weather?",
+			Footer:      &discordgo.MessageEmbedFooter{Text: m.Author.DisplayName()},
+			Color:       0xFF793B,
+			Timestamp:   time.Now().Format(time.RFC3339),
+		})
+		return
+	}
+
+	s.ChannelMessageSendEmbed(m.ChannelID, &discordgo.MessageEmbed{
+		Description: "Good Day Sir, Ready to Check the weather?",
+		Footer:      &discordgo.MessageEmbedFooter{Text: m.Author.DisplayName()},
+		Color:       0x000080,
+		Timestamp:   time.Now().Format(time.RFC3339),
+	})
 }

@@ -40,6 +40,11 @@ var Commands = map[string]models.Command{
 		Description: "Get the weather of a city. weather cityname",
 		Handler:     commands.Weather,
 	},
+	"!hello": {
+		Name:        "Hello Command",
+		Description: "The Bot greets you.",
+		Handler:     commands.Hello,
+	},
 }
 
 func WeatherHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -47,7 +52,7 @@ func WeatherHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if m.ChannelID != {channel_id} {
+	if m.ChannelID != "1539982012415348776" {
 		return
 	}
 
